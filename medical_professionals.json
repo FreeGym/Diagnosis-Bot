@@ -1,0 +1,44 @@
+{
+    "general_medical_specialists": [
+      {"name": "Allergists/Immunologists", "description": "Specialize in allergic diseases and immune system disorders."},
+      {"name": "Anesthesiologists", "description": "Manage pain and care before, during, and after surgery."},
+      {"name": "Cardiologists", "description": "Focus on heart and cardiovascular system disorders."},
+      {"name": "Dermatologists", "description": "Treat skin, hair, and nail diseases."},
+      {"name": "Endocrinologists", "description": "Deal with hormonal disorders, including diabetes."},
+      {"name": "Gastroenterologists", "description": "Specialize in the digestive system and its disorders."},
+      {"name": "Geriatricians", "description": "Focus on health care for elderly patients."},
+      {"name": "Hematologists", "description": "Treat blood disorders."},
+      {"name": "Infectious Disease Specialists", "description": "Manage infections and diseases caused by microorganisms."},
+      {"name": "Internal Medicine Specialists", "description": "Focus on adult medicine and have expertise in diagnosis, treatment, and prevention of diseases."},
+      {"name": "Nephrologists", "description": "Treat kidney diseases and disorders."},
+      {"name": "Neurologists", "description": "Specialize in disorders of the nervous system."},
+      {"name": "Obstetricians/Gynecologists", "description": "Focus on women's health, including childbirth."},
+      {"name": "Oncologists", "description": "Treat cancer."},
+      {"name": "Ophthalmologists", "description": "Treat eye and vision problems."},
+      {"name": "Orthopedic Surgeons", "description": "Deal with the musculoskeletal system."},
+      {"name": "Otolaryngologists (ENT Specialists)", "description": "Focus on ear, nose, and throat disorders."},
+      {"name": "Pathologists", "description": "Study causes and nature of diseases."},
+      {"name": "Pediatricians", "description": "Specialize in children's health."},
+      {"name": "Physiatrists", "description": "Focus on rehabilitation and physical medicine."},
+      {"name": "Plastic Surgeons", "description": "Perform reconstructive or cosmetic surgery."},
+      {"name": "Podiatrists", "description": "Specialize in foot and ankle disorders."},
+      {"name": "Psychiatrists", "description": "Treat mental disorders and conditions."},
+      {"name": "Pulmonologists", "description": "Focus on lung and respiratory diseases."},
+      {"name": "Radiologists", "description": "Use imaging to diagnose and treat diseases."},
+      {"name": "Rheumatologists", "description": "Treat rheumatic diseases and arthritis."},
+      {"name": "Sleep Medicine Specialists", "description": "Diagnose and treat sleep disorders."},
+      {"name": "Urologists", "description": "Treat disorders of the urinary system and male reproductive organs."}
+    ],
+    "sports_medicine_specialists": [
+      {"name": "Sports Medicine Physicians", "description": "Diagnose and treat sports-related injuries and conditions."},
+      {"name": "Orthopedic Sports Medicine Surgeons", "description": "Focus on the surgical treatment of sports injuries."},
+      {"name": "Primary Care Sports Medicine Doctors", "description": "Non-surgical sports medicine practitioners."},
+      {"name": "Physical Therapists", "description": "Help patients recover from injuries and improve mobility."},
+      {"name": "Athletic Trainers", "description": "Prevent, diagnose, and treat muscle and bone injuries and illnesses."},
+      {"name": "Exercise Physiologists", "description": "Analyze patients' fitness to help them improve health and maintain physical wellness."},
+      {"name": "Sports Nutritionists", "description": "Provide nutritional guidance to enhance athletic performance."},
+      {"name": "Sports Psychologists", "description": "Address mental and emotional aspects of sports and exercise."},
+      {"name": "Chiropractors", "description": "Specialize in the manual adjustment or manipulation of the spine to maintain sports health."}
+    ]
+  }
+  
