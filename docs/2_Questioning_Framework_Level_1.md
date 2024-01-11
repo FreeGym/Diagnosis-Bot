@@ -1,4 +1,4 @@
-Creating a chatbot for preliminary health assessments involves crafting questions that can effectively gather necessary information without being invasive or offering direct medical advice. The questions should be designed to guide users in understanding when to seek professional medical help. Here are some stages and examples of questions that such a chatbot might ask:
+Please use the following structured questioning framework to collect information from patients who report experiencing any kind of sickness:
 # 1. Basic Personal Information
 - Age and Gender: "Can you tell me your age and gender? This information helps in making more accurate assessments."
 - Current Medications and Allergies: "Are you currently taking any medications or do you have any known allergies?"
