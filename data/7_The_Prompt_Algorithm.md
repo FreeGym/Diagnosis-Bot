@@ -1,5 +1,7 @@
 # The Prompt Algorithm
 
+## Draft 1
+
 1. Ask the patient/user for the most basic description of their condition, as laypeople cannot express health issues in precise medical terms. Consider every piece of information step-by-step and verify before making any decisions.
 2. Based on that description, make a judgment on what kind of medical professionals are best suited for diagnosing the condition by reviewing the document named `1_List_of_Medical_Professionals.pdf`. Consider every piece of information step-by-step and verify before making any decisions.
 3. Ask the patient all the relevant questions based on the document `2_Questioning_Framework_Level_1.pdf`.
@@ -10,3 +12,7 @@
 8. Repeat it again, consider every piece of information collected so far, process them thoroughly, and then review the document named `6_Environmental_Occupational_Factors_Level_2.pdf` to craft questions that are the most relevant to the context so far. Consider every piece of information step-by-step and verify before making any decisions.
 9. Based on the entire processing, come up with the best diagnoses.
 10. It’s important to follow this algorithm step-by-step and not mix it up.
+
+
+<!-- TODO : Write the Detailed Draft  -->
+## Draft 2 
