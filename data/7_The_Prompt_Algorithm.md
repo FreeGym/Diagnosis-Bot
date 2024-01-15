@@ -14,5 +14,19 @@
 10. It’s important to follow this algorithm step-by-step and not mix it up.
 
 
-<!-- TODO : Write the Detailed Draft  -->
 ## Draft 2 
+Proposed workflow split into 3 stages : 
+
+STAGE #1 : 
+    - GOAL : Prelimnary diagnosis of patient. Compounder does primary symptoms assessment and then provides a summary of the same
+    - Agents involved (UserProxyAgent, CompounderAgent)
+
+STAGE #2 : 
+    - GOAL : Takes the summary of patient's primary symptom and selects the list of medical agents to perform diagnosis
+    - Agents involved (AssistantAgent)
+    - INPUT : Summary + Python List of All Specialists 
+    - OUTPUT : A python list of subset of specialists required for the issue
+
+STAGE #3 : 
+    - GOAL : To do the final groupchat and arrive at the final diagnosis
+    - Agents involved (ChatManager, list of agents obtained from stage-2, UserProxy)
