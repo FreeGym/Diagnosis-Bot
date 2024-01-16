@@ -1,3 +1,4 @@
+Please use the following Detailed Framework for getting a detailed description of patient's primary symptoms
 # 1. Detailed Symptom Description:
 - Symptom Characteristics: "Could you describe the symptoms in more detail? For example, is the pain sharp, dull, throbbing, or burning?"
 - Symptom Location: "Where exactly are you experiencing the symptom? Is it localized in one area or does it spread to other areas?"

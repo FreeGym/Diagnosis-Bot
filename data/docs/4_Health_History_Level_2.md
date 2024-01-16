@@ -1,3 +1,4 @@
+Please use the following Detailed Framework for getting a detailed description of patient's health history
 # 1. Detailed Past Medical History:
 - Chronic Conditions and Previous Diagnoses: "Have you been diagnosed with any chronic or long-term health conditions, such as diabetes, hypertension, or asthma?"
 - Hospitalizations and Treatments: "Have you ever been hospitalized or received any significant medical treatments or surgeries? Can you provide details about these experiences?"

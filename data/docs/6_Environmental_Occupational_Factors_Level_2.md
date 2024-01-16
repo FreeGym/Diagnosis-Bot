@@ -1,3 +1,4 @@
+Please use the following Detailed Framework for getting a detailed description of patient's environmental and occupational factors
 # 1. Detailed Environmental Exposure Questions:
 - Specific Exposures: "Have you been exposed to any specific chemicals, pollutants, or allergens in your environment, such as smoke, mold, industrial chemicals, or high levels of dust?"
 - Home Environment Assessment: "Can you describe your living conditions? For example, is there adequate ventilation, any recent renovations, or signs of mold or pests?"

@@ -1,6 +1,7 @@
 {
     "medical_professionals": [
-        "internal_medicine_specialists",
-        "pulmonologists"
+        "pulmonologists",
+        "infectious_disease_specialists",
+        "primary_care_sports_medicine_doctors"
     ]
 }

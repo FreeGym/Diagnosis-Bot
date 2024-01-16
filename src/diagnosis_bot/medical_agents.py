@@ -1,6 +1,7 @@
 import os
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
+import autogen
 from .utils import to_snake_case, save_json
 from .config_ import config_list, llm_config, openai_ef
 from .dataloader import load_json
@@ -16,7 +17,7 @@ class MedicalAgents:
             name="CompounderProxy",
             retrieve_config={
                 "task": "qa",
-                "docs_path": "data/docs/2_Questioning_Framework_Level_1.md",
+                "docs_path": "data/docs/",
                 "model": config_list[0]["model"],
                 "chunk_token_size": 2000,
                 "embedding_model": "text-embedding-ada-002",
@@ -31,9 +32,9 @@ class MedicalAgents:
             name = "Compounder",
             description = "compounder: interviews patients about their health using a specified framework",
             system_message = """You are a compounder agent. \
-                                Your job is to use a reference framework given in the context to ask patient questions pertaining to their health.\
+                                Your job is to use a basic reference framework given in the context to ask patient questions pertaining to their health.\
                                 DONOT forget to ask basic patient information such as NAME, AGE, GENDER
-                                Remember to only ask ONE QUESTION AT A TIME.\
+                                Remember to only ask ONE QUESTION AT A TIME. Validate the answer for each question.\
                                 Once done , your job is to write the summary of the patient and the issues they are facing into a json file, \
                                 using the _save_json function.\
                                 You may `TERMINATE` the conversation post this.
@@ -51,7 +52,7 @@ class MedicalAgents:
                     description=specialist["name"] + " : " + specialist["description"],
                     system_message=f"""
                         You are a {specialist["name"]} and you specialize in {specialist["description"]}.\
-                        Your job is to convey the final diagnosis to the COMPOUNDER.
+                        Your job is to convey the final diagnosis to the ChatManager Agent.
                         You may ask the patient clarifying questions regarding their symptoms. ASK ONE QUESTION AT A TIME. 
                         You may also converse with other medical experts in the group chat before arriving at the final diagnosis""",
                     human_input_mode="ALWAYS",
@@ -72,7 +73,7 @@ class MedicalAgents:
             
         
         self._reset_agents()
-        self.agents["compounderProxy"].initiate_chat(self.agents["compounder"],problem=problem)
+        self.agents["compounderProxy"].initiate_chat(self.agents["compounder"],problem=problem, search_string="basic framework")
 
     def select_agents(self,file_path="data/user_symptoms.json"):
         json_format = """{
@@ -89,7 +90,8 @@ class MedicalAgents:
                     ``{list(self.agents.keys())}.
                     Write the raw JSON string of medical professionals from the available list who can treat the patient\
                     into a json file using the _save_json function.
-                    STRICTLY ABIDE BY THE NAMING CONVENTION GIVEN IN THE LIST. DONOT CHANGE THE CASE OR NAMES
+                    STRICTLY ABIDE BY THE NAMING CONVENTION GIVEN IN THE LIST. DONOT CHANGE THE CASE OR NAMES. \
+                    CHOOSE ATLEAST 3 specialist agents
                     The JSON String should be of the following format 
                     `{json_format} `""",
             human_input_mode="NEVER",
@@ -111,7 +113,7 @@ class MedicalAgents:
             code_execution_config=True,
             max_consecutive_auto_reply = 1
         )
-        
+
         @llm_proxy.register_for_execution()
         @llm_agent.register_for_llm(name="save_json",description="save a raw json string into a json file")
         def _save_json(raw_json_string : Annotated[str, "The raw JSON string to be saved"]) -> str:
@@ -122,3 +124,39 @@ class MedicalAgents:
         llm_agent.reset()
         llm_proxy.reset()
         llm_proxy.initiate_chat(llm_agent,problem=problem,n_results=1)
+
+    def perform_final_diagnosis(self):
+        selected_agents = load_json("data/selected_agents.json")["medical_professionals"]
+        user_symptoms = load_json("data/user_symptoms.json")
+        # self.agents["compounderProxy"].retrieve_config.update()
+        self._reset_agents()
+        groupchat = autogen.GroupChat(
+            agents=[self.agents[agent] for agent in selected_agents], messages=[], max_round=25)
+        manager = autogen.GroupChatManager(
+            groupchat=groupchat, 
+            llm_config=llm_config,
+            system_message="You are a chat manager. Your job is to facilitate the smooth discussion between the medical agents.\
+                            At the end of the discussion, gather consensus from the experts in the groupchat and deliver the final \
+                            patient diagnosis.Write the final diagnosis into a JSON file using the _save_json function",
+            human_input_mode="ALWAYS"
+        )
+
+        PROBLEM = f"""Given below are my personal and basic symptoms details of in the JSON string delimited by triple backticks\
+                {user_symptoms}. Provide a detailed diagnosis of what I could be suffering from. \
+                You may ask me clarifying questions pertaining to my health if any.\
+                Do not show appreciation in your responses. If "Thank you" or "You're welcome" is said, 
+                then say TERMINATE to indicate the conversation is finished, and this is your last message."""
+        @self.agents["compounderProxy"].register_for_execution()
+        @manager.register_for_llm(name="save_json",description="save a raw json string into a json file")
+        def _save_json(raw_json_string : Annotated[str, "The raw JSON string to be saved"]) -> str:
+            file_path = "data/final_diagnosis.json"
+            return save_json(raw_json_string,file_path)
+
+        self._reset_agents()
+        self.agents["compounderProxy"].initiate_chat(
+            manager,
+            problem=PROBLEM,
+            n_results=3,
+            search_string="detailed description"
+        )
+        

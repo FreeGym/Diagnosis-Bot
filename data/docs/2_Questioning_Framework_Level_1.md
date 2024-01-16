@@ -1,4 +1,4 @@
-Please use the following structured questioning framework to collect information from patients who report experiencing any kind of sickness:
+Please use the following structured questioning basic framework to collect information from patients who report experiencing any kind of sickness:
 # 1. Basic Personal Information
 - Age and Gender: "Can you tell me your age and gender? This information helps in making more accurate assessments."
 - Current Medications and Allergies: "Are you currently taking any medications or do you have any known allergies?"

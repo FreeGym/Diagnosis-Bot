@@ -1,3 +1,4 @@
+Please use the following Detailed Framework for getting a detailed description of patient's lifestyle factors
 # 1. In-Depth Diet Inquiry:
 - Dietary Patterns: "Could you describe your typical daily diet? What kinds of foods do you regularly eat?"
 - Special Diets and Restrictions: "Are you following any specific diet plan, such as vegan, vegetarian, low-carb, or gluten-free? Do you have any dietary restrictions or intolerances?"

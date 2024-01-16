@@ -1,8 +1,4 @@
-import os
-import json
 from diagnosis_bot.medical_agents import MedicalAgents
-import autogen
-#TODO : Implement Stage-2 (function for choosing agents) 
 
 def main():
 
@@ -14,6 +10,7 @@ def main():
     
     agents.prelimnary_symptom_analysis(prompt)
     agents.select_agents()
+    agents.perform_final_diagnosis()
 
 if __name__ == "__main__":
     main()
