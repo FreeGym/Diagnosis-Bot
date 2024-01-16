@@ -5,7 +5,7 @@ import autogen
 from .utils import to_snake_case, save_json
 from .config_ import config_list, llm_config, openai_ef
 from .dataloader import load_json
-from typing import Annotated, Dict
+from typing import Annotated
 
 
 
@@ -76,6 +76,7 @@ class MedicalAgents:
         self.agents["compounderProxy"].initiate_chat(self.agents["compounder"],problem=problem, search_string="basic framework")
 
     def select_agents(self,file_path="data/user_symptoms.json"):
+        print("Hi dude , I was called")
         json_format = """{
                         "medical_professionals":[
                             "agent_1",
@@ -89,8 +90,8 @@ class MedicalAgents:
                              Given below are the names of the available medical professionals delimited by double backticks\
                     ``{list(self.agents.keys())}.
                     Write the raw JSON string of medical professionals from the available list who can treat the patient\
-                    into a json file using the _save_json function.
-                    STRICTLY ABIDE BY THE NAMING CONVENTION GIVEN IN THE LIST. DONOT CHANGE THE CASE OR NAMES. \
+                    into a json file using the _save_json function.DO NOT ASSUME ANY INFORMATION.\
+                    STRICTLY ABIDE BY THE NAMING CONVENTION GIVEN IN THE LIST. DO NOT CHANGE THE CASE OR NAMES. \
                     CHOOSE ATLEAST 3 specialist agents
                     The JSON String should be of the following format 
                     `{json_format} `""",
@@ -107,8 +108,10 @@ class MedicalAgents:
                 "chunk_token_size": 2000,
                 "embedding_model": "text-embedding-ada-002",
                 "embedding_function": openai_ef,
-                "get_or_create": True,
+                "get_or_create": False,
+                "collection_name" : "patient-docs"
             },
+
             human_input_mode="NEVER",
             code_execution_config=True,
             max_consecutive_auto_reply = 1
@@ -117,6 +120,7 @@ class MedicalAgents:
         @llm_proxy.register_for_execution()
         @llm_agent.register_for_llm(name="save_json",description="save a raw json string into a json file")
         def _save_json(raw_json_string : Annotated[str, "The raw JSON string to be saved"]) -> str:
+            os.system("touch data/selected_agents.json")
             file_path = "data/selected_agents.json"
             return save_json(raw_json_string,file_path)
         
