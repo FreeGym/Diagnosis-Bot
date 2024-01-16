@@ -1,14 +1,20 @@
 {
     "name": "Pranav",
     "age": 21,
-    "gender": "Male",
-    "symptoms": "Knee pain",
-    "onset": "3 months ago",
-    "severity": 9,
-    "previous_health_issues": "No",
-    "family_history": "No",
-    "lifestyle": "Home food, 30 mins of lifting, 15 mins of running, 7 hours of sleep",
-    "stress_mental_health": "No",
-    "environmental_exposure": "No",
-    "occupational_hazards": "Sitting in front of a digital screen for long hours"
+    "gender": "male",
+    "symptoms": [
+        "cold",
+        "cough",
+        "fever"
+    ],
+    "onset_of_symptoms": "3 days ago",
+    "discomfort_pain_rating": 7,
+    "runny_nose": "constant",
+    "intense_cough": "at night",
+    "previous_health_issues": "no",
+    "family_history": "no",
+    "lifestyle_habits": "smoker, junk food diet, no exercise",
+    "stress_mental_health": "no",
+    "environmental_exposure": "smoke of incense sticks",
+    "occupational_risks": "no"
 }
