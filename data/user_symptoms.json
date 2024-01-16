@@ -1,0 +1,14 @@
+{
+    "name": "Pranav",
+    "age": 21,
+    "gender": "Male",
+    "symptoms": "Knee pain",
+    "onset": "3 months ago",
+    "severity": 9,
+    "previous_health_issues": "No",
+    "family_history": "No",
+    "lifestyle": "Home food, 30 mins of lifting, 15 mins of running, 7 hours of sleep",
+    "stress_mental_health": "No",
+    "environmental_exposure": "No",
+    "occupational_hazards": "Sitting in front of a digital screen for long hours"
+}
